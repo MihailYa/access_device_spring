@@ -1,0 +1,127 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	padding: 20px;
+}
+
+td {
+	text-align: center;
+	border: solid 1px #ffffff;
+}
+
+td input[type=submit] {
+	max-width: 80px;
+	min-width: 80px;
+	height: 80px;
+	background: #077187;
+	border: none;
+	color: #ffffff;
+	font-family: sans-serif;
+	font-weight: bold;
+	/*font-size: 20pt;*/
+	-webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.callTd {
+}
+
+.holdCall {
+	font-family: sans-serif;
+	font-weight: bold;
+	border-top: none;
+	vertical-align: center;
+	padding: 15px;
+	border: solid 1px #ffffff;
+	color: #353535;
+}
+
+td input[type=submit]:hover{
+	background: #0896B2;
+}
+
+.guiDisplay {
+	border: solid 1px #ffffff;
+	background: #F8F1FF;
+	padding: 15px;
+}
+
+.guiDisplay p {
+	max-width: 200px;
+}
+
+.accessDeviceDiv {
+	padding: 20px;
+	border: 1px solid #077187;
+	display: inline-block;
+}
+
+.accessDeviceDiv table {
+	margin: 0 auto;
+}
+
+.loginForm {
+	border: solid 1px #077187;
+	padding: 15px;
+	display: inline-block;
+}
+
+input[type=text], input[type=password] {
+	padding: 5px 10px;
+	border: none;
+	border-bottom: solid 2px #CCCCCC;
+	background: #f9f9f9;
+}
+
+input[type=text]:focus {
+	outline: none;
+	border-bottom: solid 2px #0896B2;
+}
+
+input[type=password]:focus {
+	outline: none;
+	border-bottom: solid 2px #0896B2;
+}
+
+.defaultInput {
+	background: #077187;
+	border: none;
+	color: #ffffff;
+	font-family: sans-serif;
+	padding: 5px 10px;
+	/*font-size: 20pt;*/
+	-webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+
+.defaultInput:hover{
+	background: #0896B2;
+}
+
+.imageDiv {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+}
+
+.imageDiv img {
+	width: 60px;
+	height: 60px;
+	float: left;
+}
+
+.imagesTd {
+}
+
+.errorMessageP {
+	font-family: sans-serif;
+	font-size: 12pt;
+	color: #C81D25;
+}

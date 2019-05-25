@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AccessDevice</title>
+    <link rel="stylesheet" th:href="@{/css/accessDevice.css}">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var refreshSeconds = [[${refresh}]];
+        if(refreshSeconds != null) {
+            setTimeout(function () {
+                window.location=window.location;
+            }, refreshSeconds * 1000)
+        }
+
+        /*]]>*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<form action="AdminPanelServlet" method="post">
+    <input type="hidden" name="command" value="logoutCommand">
+    <input type="submit" value="Logout" class="defaultInput">
+</form>
+
+<h1 style="margin-top: 20px;">AccessCards table</h1>
+<table class="simpleTable" cellspacing="0">
+    <tr>
+        <th>AccessCardId</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Schedule begin time</th>
+        <th>Schedule end time</th>
+        <th>Is card locked</th>
+    </tr>
+    <th:block th:each="accessCard : ${accessCards}">
+        <form action="AdminPanelServlet" method="post">
+            <input type="hidden" name="command" value="updateAccessCard">
+            <tr>
+                <td th:text="${accessCard.getId()}">
+                    <input type="hidden" name="accessCardId" th:value="${accessCard.getId()}">
+                    <input type="hidden" name="accessCardPersonId" th:value="${accessCard.getPerson().getId()}">
+                    <input type="hidden" name="accessCardScheduleId" th:value="${accessCard.getSchedule().getId()}">
+                        </td>
+                <td th:text="${accessCard.getPerson().getName()}"></td>
+                <td th:text="${accessCard.getPerson().getSurname()}"></td>
+                <td th:text="${accessCard.getSchedule().getBeginTime()}"></td>
+                <td th:text="${accessCard.getSchedule().getEndTime()}"></td>
+                <td>
+                    <input type="checkbox" name="isAccessCardLocked" onChange="this.form.submit()"
+                           th:checked="${accessCard.isLocked()}"
+                /></td>
+            </tr>
+        </form>
+    </th:block>
+</table>
+<h1 style="margin-top: 20px;">Visitors journal</h1>
+<table class="simpleTable">
+    <tr>
+        <th>RecordId</th>
+        <th>AccessCardId</th>
+        <th>Visit date</th>
+    </tr>
+    <th:block th:each="visitRecord : ${visitRecords}">
+        <tr>
+            <td th:text="${visitRecord.getId()}"></td>
+            <td th:text="${visitRecord.getAccessCardId()}"></td>
+            <td th:text="${visitRecord.getVisitDateTime()}"></td>
+        </tr>
+    </th:block>
+</table>
+
+<h1 style="margin-top: 20px;">Cards locking journal</h1>
+<table class="simpleTable">
+    <tr>
+        <th>RecordId</th>
+        <th>AccessCardId</th>
+        <th>Locking date</th>
+    </tr>
+    <th:block th:each="lockCardRecord : ${lockCardRecords}">
+        <tr>
+            <td th:text="${lockCardRecord.getId()}"></td>
+            <td th:text="${lockCardRecord.getAccessCardId()}"></td>
+            <td th:text="${lockCardRecord.getLockingDateTime()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
