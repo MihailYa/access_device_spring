@@ -13,9 +13,32 @@ public class AdminPanel {
 		this.database = database;
 	}
 
+	public void deleteAccessCard(AccessCard accessCard) {
+		AccessCardDao accessCardDao = database.getAccessCardDao();
+		accessCardDao.delete(accessCard);
+	}
+
 	public void updateAccessCard(AccessCard accessCard) {
 		AccessCardDao accessCardDao = database.getAccessCardDao();
+		PersonDao personDao = database.getPersonDao();
+		ScheduleDao scheduleDao = database.getScheduleDao();
+
 		accessCardDao.update(accessCard);
+		personDao.update(accessCard.getPerson());
+		scheduleDao.update(accessCard.getSchedule());
+	}
+
+	public void insertAccessCard(AccessCard accessCard) {
+		AccessCardDao accessCardDao = database.getAccessCardDao();
+		PersonDao personDao = database.getPersonDao();
+		ScheduleDao scheduleDao = database.getScheduleDao();
+
+		int personId = personDao.insert(accessCard.getPerson());
+		int scheduleId = scheduleDao.insert(accessCard.getSchedule());
+
+		accessCard.setPersonId(personId);
+		accessCard.setScheduleId(scheduleId);
+		accessCardDao.insert(accessCard);
 	}
 
 	public List<AccessCard> getAllAccessCards() {

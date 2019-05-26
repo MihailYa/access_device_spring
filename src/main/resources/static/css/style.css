@@ -28,6 +28,31 @@ h1 {
 	transition: background-color 0.2s ease-out;
 }
 
+input[type=text], input[type=password] {
+	padding: 5px 10px;
+	border: none;
+	border-bottom: solid 2px #CCCCCC;
+	background: #f9f9f9;
+}
+
+input[type=text]:focus {
+	outline: none;
+	border-bottom: solid 2px #0896B2;
+}
+
+input[type=password]:focus {
+	outline: none;
+	border-bottom: solid 2px #0896B2;
+}
+
+.hiddenInput {
+	display: none;
+}
+
+.editCardButton {
+	display: none;
+}
+
 .defaultInput:hover{
 	background: #0896B2;
 }

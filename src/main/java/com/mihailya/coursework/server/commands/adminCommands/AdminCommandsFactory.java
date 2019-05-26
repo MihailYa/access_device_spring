@@ -2,10 +2,7 @@ package com.mihailya.coursework.server.commands.adminCommands;
 
 import com.mihailya.coursework.server.commands.AbstractCommandsFactory;
 import com.mihailya.coursework.server.commands.ICommand;
-import com.mihailya.coursework.server.commands.adminCommands.commands.AdminEmptyCommand;
-import com.mihailya.coursework.server.commands.adminCommands.commands.AdminPanelCommand;
-import com.mihailya.coursework.server.commands.adminCommands.commands.LogoutCommand;
-import com.mihailya.coursework.server.commands.adminCommands.commands.UpdateAccessCardCommand;
+import com.mihailya.coursework.server.commands.adminCommands.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +15,8 @@ public class AdminCommandsFactory extends AbstractCommandsFactory {
 	public AdminCommandsFactory() {
 		commands.put("adminPanelCommand", new AdminPanelCommand());
 		commands.put("updateAccessCard", new UpdateAccessCardCommand());
+		commands.put("insertAccessCard", new InsertAccessCardCommand());
+		commands.put("deleteAccessCard", new DeleteAccessCardCommand());
 		commands.put("logoutCommand", new LogoutCommand());
 	}
 

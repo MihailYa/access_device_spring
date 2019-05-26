@@ -13,9 +13,7 @@ import java.util.Map;
 public class AdminEmptyCommand extends AbstractAdminCommand {
 	@Override
 	public String execute(Map<String, String> requestParams, Model model, AccessDevice accessDevice, Map<String, String> sessionParams) {
-		if(sessionParams.get(MainController.SESSION_ADMIN_ID) == null) {
-			return new DeviceEmptyCommand().execute(requestParams, model, accessDevice, sessionParams);
-		}
+		checkAdminSession(sessionParams);
 
 		PageFiller.outputAdminPanelInfo(requestParams, model, accessDevice);
 		return PageManager.getInstance().getPage(PageManager.PagesIds.ADMIN_DEFAULT_PAGE);

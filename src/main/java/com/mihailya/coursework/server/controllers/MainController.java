@@ -53,6 +53,10 @@ public class MainController {
 
 	public static final String PARAM_ACCESS_CARD_PERSON_ID = "accessCardPersonId";
 	public static final String PARAM_ACCESS_CARD_SCHEDULE_ID = "accessCardScheduleId";
+	public static final String PARAM_ACCESS_CARD_PERSON_NAME = "accessCardPersonName";
+	public static final String PARAM_ACCESS_CARD_PERSON_SURNAME = "accessCardPersonSurname";
+	public static final String PARAM_ACCESS_CARD_SCHEDULE_BEGIN_TIME = "accessCardScheduleBeginTime";
+	public static final String PARAM_ACCESS_CARD_SCHEDULE_END_TIME = "accessCardScheduleEndTime";
 	public static final String PARAM_IS_ACCESS_CARD_LOCKED = "isAccessCardLocked";
 
 	public static final String OUT_PARAM_ACCESS_CARDS = "accessCards";
