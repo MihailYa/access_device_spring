@@ -3,8 +3,8 @@ package com.mihailya.coursework.accessDevice.deviceStates;
 import com.mihailya.coursework.accessDevice.AccessDevice;
 import com.mihailya.coursework.accessDevice.data.entities.AccessCard;
 import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.buttons.Button;
-import com.mihailya.coursework.accessDevice.util.DeviceConfigManager;
-import com.mihailya.coursework.accessDevice.util.DeviceMessagesManager;
+import com.mihailya.coursework.accessDevice.util.managers.DeviceConfigManager;
+import com.mihailya.coursework.accessDevice.util.managers.DeviceMessagesManager;
 
 public class InitState extends AccessDeviceState {
 

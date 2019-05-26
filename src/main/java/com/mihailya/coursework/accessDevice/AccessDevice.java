@@ -9,7 +9,7 @@ import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.IButto
 import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.buttons.Button;
 import com.mihailya.coursework.accessDevice.deviceStates.AccessDeviceState;
 import com.mihailya.coursework.accessDevice.deviceStates.InitState;
-import com.mihailya.coursework.accessDevice.util.TimeLeftTimer;
+import com.mihailya.coursework.accessDevice.util.timer.TimeLeftTimer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.task.TaskExecutor;

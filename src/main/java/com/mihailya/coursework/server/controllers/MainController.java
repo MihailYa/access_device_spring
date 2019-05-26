@@ -54,10 +54,11 @@ public class MainController {
 	public static final String PARAM_ACCESS_CARD_PERSON_ID = "accessCardPersonId";
 	public static final String PARAM_ACCESS_CARD_SCHEDULE_ID = "accessCardScheduleId";
 	public static final String PARAM_IS_ACCESS_CARD_LOCKED = "isAccessCardLocked";
-	public static final String OUT_PARAM_ACCESS_CARDS = "accessCards";
 
+	public static final String OUT_PARAM_ACCESS_CARDS = "accessCards";
 	public static final String OUT_PARAM_VISIT_RECORDS = "visitRecords";
 	public static final String OUT_PARAM_LOCK_CARD_RECORDS = "lockCardRecords";
+
 	public static final String SESSION_ADMIN_ID = "sessionAdminId";
 
 	private AccessDevice accessDevice;
@@ -65,48 +66,15 @@ public class MainController {
 	private AbstractCommandsFactory deviceCommandsFactory;
 	private AbstractCommandsFactory adminCommandsFactory;
 
-	private TaskExecutor taskExecutor;
-
-	private DataSource dataSource;
-
 	@Autowired
 	public MainController(AccessDevice accessDevice,
 	                      AbstractCommandsFactory deviceCommandsFactory,
-	                      AbstractCommandsFactory adminCommandsFactory,
-	                      TaskExecutor taskExecutor, DataSource dataSource) {
-		this.dataSource = dataSource;
+	                      AbstractCommandsFactory adminCommandsFactory) {
 		this.accessDevice = accessDevice;
 		this.deviceCommandsFactory = deviceCommandsFactory;
 		this.adminCommandsFactory = adminCommandsFactory;
-		this.taskExecutor = taskExecutor;
 
 		log.info("New MainController was created");
-	}
-
-	@RequestMapping(value = "/Test", method = {RequestMethod.GET, RequestMethod.POST})
-	public String testThreads(Model model) {
-		log.info("testThreads request");
-
-		//AccessCard accessCard = new AccessCard();
-		//accessCard.setId(1);
-		//accessDevice.getMemory().recordCardAccess(accessCard);
-		//accessDevice.getMemory().lockCard(accessCard);
-
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		String query = "INSERT INTO ADMINS (LOGIN, PASSWORD) VALUES (?, ?)";
-
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-
-		jdbcTemplate.update(connection -> {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, "testLogin1");
-			ps.setString(2, "testPassword1");
-			return ps;
-		}, keyHolder);
-
-		Number key = keyHolder.getKey();
-
-		return "index";
 	}
 
 
@@ -124,19 +92,18 @@ public class MainController {
 			Admin admin = new Admin();
 			admin.setId(Integer.valueOf(adminId));
 			model.addAttribute("admin", admin);
-			log.debug("Admin session was created");
 		}
 
 		return page;
 	}
 
 	@RequestMapping(value = "/AdminPanelServlet", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminPanelRequestsHandler(@ModelAttribute("admin") Admin admin,
+	public String adminPanelRequestsHandler(@SessionAttribute("admin") Admin admin,
 	                                        @RequestParam Map<String, String> allRequestParams,
-	                                        Model model, WebRequest request, DefaultSessionAttributeStore store,
+	                                        Model model,
+	                                        WebRequest request,
+	                                        DefaultSessionAttributeStore store,
 	                                        SessionStatus status) {
-		log.info("AdminPanel page");
-
 		ICommand command = adminCommandsFactory.getCommand(allRequestParams);
 
 		Map<String, String> sessionParams = new HashMap<>();

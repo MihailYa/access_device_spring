@@ -1,4 +1,4 @@
-package com.mihailya.coursework.accessDevice.util;
+package com.mihailya.coursework.accessDevice.util.timer;
 
 import org.springframework.core.task.TaskExecutor;
 

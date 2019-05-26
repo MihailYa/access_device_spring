@@ -7,6 +7,7 @@ import com.mihailya.coursework.accessDevice.data.entities.AccessCard;
 import com.mihailya.coursework.accessDevice.data.entities.Admin;
 import com.mihailya.coursework.accessDevice.data.entities.LockCardRecord;
 import com.mihailya.coursework.accessDevice.data.entities.VisitRecord;
+import com.mihailya.coursework.accessDevice.util.security.Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.task.TaskExecutor;
@@ -113,6 +114,7 @@ public class Memory {
 	}
 
 	public boolean verifyAdmin(Admin admin) {
+		admin.setPassword(Encoder.md5(admin.getPassword()));
 		AdminDao adminDao = database.getAdminDao();
 		Admin foundAdmin = adminDao.find(admin);
 		if(foundAdmin != null) {
@@ -139,5 +141,4 @@ public class Memory {
 			e.printStackTrace();
 		}
 	}
-
 }
