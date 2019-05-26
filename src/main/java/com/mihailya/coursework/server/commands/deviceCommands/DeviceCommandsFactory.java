@@ -5,7 +5,7 @@ import com.mihailya.coursework.server.commands.ICommand;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.AccessCardRecipientCommand;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.AdminLoginCommand;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.ButtonsPanelCommand;
-import com.mihailya.coursework.server.commands.deviceCommands.commands.DeviceEmptyCommand;
+import com.mihailya.coursework.server.commands.deviceCommands.commands.DeviceDefaultCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class DeviceCommandsFactory extends AbstractCommandsFactory {
 		AbstractDeviceCommand command = commands.get(requestCommand);
 
 		if(command == null) {
-			command = new DeviceEmptyCommand();
+			command = new DeviceDefaultCommand();
 		}
 
 		return command;

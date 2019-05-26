@@ -18,18 +18,21 @@ public class UpdateAccessCardCommand extends AbstractAdminCommand {
 	public String execute(Map<String, String> requestParams, Model model, AccessDevice accessDevice, Map<String, String> sessionParams) {
 		checkAdminSession(sessionParams);
 
-		AccessCard accessCard = EntityFiller.fillAccessCard(requestParams);
+		try {
+			AccessCard accessCard = EntityFiller.fillAccessCard(requestParams);
 
-		if(accessCard == null) {
-			throw new RuntimeException("Wrong input data");
+			if (accessCard == null) {
+				throw new RuntimeException("Wrong input data");
+			}
+
+			accessDevice.getMemory()
+			            .getAdminPanel()
+			            .updateAccessCard(accessCard);
+		} catch (Exception e) {
+			model.addAttribute(MainController.OUT_PARAM_ERROR_MESSAGE, "Error: " + e.getMessage());
 		}
 
-		accessDevice.getMemory()
-		            .getAdminPanel()
-		            .updateAccessCard(accessCard);
-
 		outputAdminPanelInfo(requestParams, model, accessDevice);
-
 
 		return PageManager.getInstance()
 		                  .getPage(PageManager.PagesIds.ADMIN_PANEL_PAGE);

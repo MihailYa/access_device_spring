@@ -15,17 +15,21 @@ public class InsertAccessCardCommand extends AbstractAdminCommand {
 	public String execute(Map<String, String> requestParams, Model model, AccessDevice accessDevice, Map<String, String> sessionParams) {
 		checkAdminSession(sessionParams);
 
-		AccessCard accessCard = EntityFiller.fillAccessCardData(requestParams);
-		if(accessCard == null) {
-			throw new RuntimeException("Wrong input data");
+		try {
+			AccessCard accessCard = EntityFiller.fillAccessCardData(requestParams);
+			if (accessCard == null) {
+				throw new RuntimeException("Wrong input data");
+			}
+
+			accessDevice.getMemory()
+			            .getAdminPanel()
+			            .insertAccessCard(accessCard);
+
+		} catch (Exception e) {
+			model.addAttribute(MainController.OUT_PARAM_ERROR_MESSAGE, "Error: " + e.getMessage());
 		}
 
-		accessDevice.getMemory()
-		            .getAdminPanel()
-		            .insertAccessCard(accessCard);
-
 		outputAdminPanelInfo(requestParams, model, accessDevice);
-
 
 		return PageManager.getInstance()
 		                  .getPage(PageManager.PagesIds.ADMIN_PANEL_PAGE);

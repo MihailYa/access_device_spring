@@ -62,6 +62,7 @@ public class MainController {
 	public static final String OUT_PARAM_ACCESS_CARDS = "accessCards";
 	public static final String OUT_PARAM_VISIT_RECORDS = "visitRecords";
 	public static final String OUT_PARAM_LOCK_CARD_RECORDS = "lockCardRecords";
+	public static final String OUT_PARAM_ERROR_MESSAGE = "errorMessage";
 
 	public static final String SESSION_ADMIN_ID = "sessionAdminId";
 

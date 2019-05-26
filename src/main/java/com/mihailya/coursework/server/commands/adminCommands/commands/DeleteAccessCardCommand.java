@@ -16,22 +16,24 @@ public class DeleteAccessCardCommand extends AbstractAdminCommand {
 		checkAdminSession(sessionParams);
 
 		String accessCardId = requestParams.get(MainController.PARAM_ACCESS_CARD_ID);
+		try {
 
+			if (accessCardId == null) {
+				throw new RuntimeException("Wrong input data");
+			}
 
-		if(accessCardId == null) {
-			throw new RuntimeException("Wrong input data");
+			int accessCardIdInt = Integer.parseInt(accessCardId);
+
+			AccessCard accessCard = new AccessCard();
+			accessCard.setId(accessCardIdInt);
+			accessDevice.getMemory()
+			            .getAdminPanel()
+			            .deleteAccessCard(accessCard);
+		} catch (Exception e) {
+			model.addAttribute(MainController.OUT_PARAM_ERROR_MESSAGE, "Error: " + e.getMessage());
 		}
 
-		int accessCardIdInt = Integer.parseInt(accessCardId);
-
-		AccessCard accessCard = new AccessCard();
-		accessCard.setId(accessCardIdInt);
-		accessDevice.getMemory()
-		            .getAdminPanel()
-		            .deleteAccessCard(accessCard);
-
 		outputAdminPanelInfo(requestParams, model, accessDevice);
-
 
 		return PageManager.getInstance()
 		                  .getPage(PageManager.PagesIds.ADMIN_PANEL_PAGE);

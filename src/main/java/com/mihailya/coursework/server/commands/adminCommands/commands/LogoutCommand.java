@@ -2,7 +2,6 @@ package com.mihailya.coursework.server.commands.adminCommands.commands;
 
 import com.mihailya.coursework.accessDevice.AccessDevice;
 import com.mihailya.coursework.server.commands.adminCommands.AbstractAdminCommand;
-import com.mihailya.coursework.server.commands.deviceCommands.commands.DeviceEmptyCommand;
 import com.mihailya.coursework.server.controllers.MainController;
 import com.mihailya.coursework.server.managers.PageManager;
 import org.springframework.ui.Model;

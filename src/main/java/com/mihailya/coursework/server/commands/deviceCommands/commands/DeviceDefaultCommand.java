@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 
 import java.util.Map;
 
-public class DeviceEmptyCommand extends AbstractDeviceCommand {
+public class DeviceDefaultCommand extends AbstractDeviceCommand {
 	@Override
 	public String execute(Map<String, String> requestParams, Model model, AccessDevice accessDevice, Map<String, String> sessionParams) {
 		PageFiller.outputAccessDevice(requestParams, model, accessDevice);

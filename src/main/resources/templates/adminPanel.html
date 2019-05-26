@@ -67,6 +67,8 @@
 
 <h1 style="margin-top: 20px;">AccessCards table</h1>
 
+<p class="errorMessageP" th:text="${errorMessage}" th:if="${errorMessage != null}"></p>
+
 <table class="simpleTable tableWraper" cellspacing="0">
     <tr>
         <th>AccessCardId</th>

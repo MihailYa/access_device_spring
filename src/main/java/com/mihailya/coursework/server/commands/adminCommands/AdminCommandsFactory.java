@@ -27,7 +27,7 @@ public class AdminCommandsFactory extends AbstractCommandsFactory {
 		AbstractAdminCommand command = commands.get(requestCommand);
 
 		if(command == null) {
-			command = new AdminEmptyCommand();
+			command = new AdminDefaultCommand();
 		}
 
 		return command;
