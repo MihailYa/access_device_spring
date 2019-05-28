@@ -51,6 +51,7 @@ public class InitState extends AccessDeviceState {
 
 			parent.changeState(new AccessCodeInputState(parent));
 		} else {
+			parent.getAccessCardRecipient().returnCard();
 			parent.updateMessage(DeviceMessagesManager.getInstance()
 			                                          .getMessage(DeviceMessagesManager.MessagesIds.ACCESS_DENIED));
 		}

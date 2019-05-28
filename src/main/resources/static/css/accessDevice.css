@@ -4,7 +4,6 @@
 }
 
 body {
-	padding: 20px;
 }
 
 td {
@@ -23,12 +22,9 @@ td input[type=submit] {
 	font-weight: bold;
 	/*font-size: 20pt;*/
 	-webkit-transition: background-color 0.2s ease-out;
-  -moz-transition: background-color 0.2s ease-out;
-  -o-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-}
-
-.callTd {
+	-moz-transition: background-color 0.2s ease-out;
+	-o-transition: background-color 0.2s ease-out;
+	transition: background-color 0.2s ease-out;
 }
 
 .holdCall {
@@ -55,16 +51,6 @@ td input[type=submit]:hover{
 	max-width: 200px;
 }
 
-.accessDeviceDiv {
-	padding: 20px;
-	border: 1px solid #077187;
-	display: inline-block;
-}
-
-.accessDeviceDiv table {
-	margin: 0 auto;
-}
-
 .loginForm {
 	border: solid 1px #077187;
 	padding: 15px;
@@ -72,43 +58,48 @@ td input[type=submit]:hover{
 }
 
 input[type=text], input[type=password] {
-	padding: 5px 10px;
+	padding: 4px 10px;
 	border: none;
-	border-bottom: solid 2px #CCCCCC;
-	background: #f9f9f9;
+	border-bottom: solid 1px #044856;
+	background: none;
 }
 
 input[type=text]:focus {
 	outline: none;
-	border-bottom: solid 2px #0896B2;
+	border-bottom: solid 1px #EA6500;
+}
+
+input[type=text]:disabled {
+	background: #E2E2E2;
 }
 
 input[type=password]:focus {
 	outline: none;
-	border-bottom: solid 2px #0896B2;
+	border-bottom: solid 1px #EA6500;
 }
 
 .defaultInput {
-	background: #077187;
+	background: #FF6E00;
+	color: #E4FDE1;
 	border: none;
-	color: #ffffff;
 	font-family: sans-serif;
 	padding: 5px 10px;
 	/*font-size: 20pt;*/
 	-webkit-transition: background-color 0.2s ease-out;
-  -moz-transition: background-color 0.2s ease-out;
-  -o-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
+	-moz-transition: background-color 0.2s ease-out;
+	-o-transition: background-color 0.2s ease-out;
+	transition: background-color 0.2s ease-out;
 }
 
 .defaultInput:hover{
-	background: #0896B2;
+	background: #FF7E1C;
 }
 
 .imageDiv {
 	display: inline-block;
 	width: 60px;
 	height: 60px;
+	margin-bottom: 10px;
 }
 
 .imageDiv img {
@@ -120,8 +111,142 @@ input[type=password]:focus {
 .imagesTd {
 }
 
+
+
+
+.devicePanelDiv {
+	border-left: solid 1px #077187;
+	border-right: solid 1px #077187;
+}
+
+.devicePanel {
+	min-height: 100vh;
+	width: 100%;
+	text-align: center;
+}
+
+.guiDisplay p {
+	margin: 0px;
+}
+
+
+.accessDeviceForm input[type=submit] {
+	font-size: 0.8em;
+}
+
+.accessDeviceDiv {
+	padding: 20px;
+	border: 1px solid #077187;
+	display: inline-block;
+	margin:0 auto;
+}
+
+.accessDeviceForm {
+	display: inline-block;
+	margin:20px auto;
+}
+
+.accessDeviceCardRecipient {
+	text-align: left;
+	display: inline-block;
+}
+
+.accessDeviceCardRecipient input[type=submit] {
+	margin-top: 10px;
+	width: 100%;
+}
+
+.accessDeviceCardRecipient input[type=text] {
+	width: 100%;
+}
+
+.accessDeviceCardRecipient label {
+	width: 100%;
+}
+
+
+.holdCall {
+	border: 1px dashed #077187;
+	padding: 10px;
+}
+
+.holdCall label {
+	margin-bottom: 0;
+	font-family: sans-serif;
+}
+
+
+
+
+.loginDiv {
+	background: #077187;
+}
+
+.loginPanel {
+	background: #077187;
+	min-height: 100vh;
+	width: 100%;
+	text-align: center;
+}
+
+.loginForm {
+	display: inline-block;
+	text-align: left;
+	margin-top: 100px;
+}
+
+.loginForm input[type=text], .loginForm input[type=password] {
+	padding: 5px 10px;
+	border: none;
+	border-bottom: solid 1px #E7ECEF;
+	background: #077187;
+	caret-color: #E4FDE1;
+	color:#E4FDE1;
+	font-family: sans-serif;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.loginForm input[type=text]:focus {
+	outline: none;
+	border-bottom: solid 1px #F77716;
+}
+
+.loginForm input[type=password]:focus {
+	outline: none;
+	border-bottom: solid 1px #F77716;
+}
+
+.loginForm input[type=submit] {
+	background: #F77716;
+	color: #E4FDE1;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.loginForm input[type=submit]:hover {
+	background: #F78731;
+}
+
+.loginForm input::placeholder {
+	color:#BED3BC;
+}
+
+.loginForm input:-webkit-autofill,
+.loginForm input:-webkit-autofill:hover,
+.loginForm input:-webkit-autofill:focus{
+	-webkit-text-fill-color: #E4FDE1;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+.loginForm h1 {
+	color:#E4FDE1;
+	font-family: sans-serif;
+}
+
 .errorMessageP {
 	font-family: sans-serif;
 	font-size: 12pt;
-	color: #C81D25;
+	color: #FF1C1C;
+	margin: 10px 0 0 0;
 }

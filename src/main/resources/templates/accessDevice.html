@@ -3,13 +3,15 @@
 <head>
     <title>AccessDevice</title>
     <link rel="stylesheet" th:href="@{/css/accessDevice.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script th:inline="javascript">
         /*<![CDATA[*/
 
         var refreshSeconds = [[${refresh}]];
-        if(refreshSeconds != null) {
+        if (refreshSeconds != null) {
             setTimeout(function () {
-                window.location=window.location;
+                window.location = window.location;
             }, refreshSeconds * 1000)
         }
 
@@ -17,84 +19,118 @@
     </script>
 </head>
 <body>
-<div class="accessDeviceDiv">
-    <form action="AccessDevice" method="post">
-        <input type="hidden" name="command" value="buttonsPanelCommand">
-        <table cellspacing="0">
-            <tr>
-                <td colspan="3" class="imagesTd">
-                    <div class="imageDiv">
-                        <img src="../static/img/lock-solid.svg" th:src="@{/img/lock-solid.svg}" alt="lockedDoor" th:if="${isDoorLocked}">
-                        <img src="../static/img/lock-open-solid.svg" th:src="@{/img/lock-open-solid.svg}" alt="unLockedDoor" th:unless="${isDoorLocked}">
-                    </div>
-                    <div class="imageDiv">
-                        <img src="../static/img/volume-up-solid.svg" th:src="@{/img/volume-up-solid.svg}" alt="ringingBell" th:if="${isBellRinging}">
-                        <img src="../static/img/volume-off-solid.svg" th:src="@{/img/volume-off-solid.svg}" alt="bell" th:unless="${isBellRinging}">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" class="guiDisplay"><p th:text="${message}"></p></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="numberButton" value="1" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="2" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="3" class="numberButton"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="numberButton" value="4" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="5" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="6" class="numberButton"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="numberButton" value="7" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="8" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="9" class="numberButton"></td>
-            </tr>
-            <tr>
-                <td class="callTd"><input type="submit" name="callButton" value="CALL" class="numberButton"></td>
-                <td><input type="submit" name="numberButton" value="0" class="numberButton"></td>
-                <td><input type="submit" name="controlButton" value="CONTROL" class="numberButton"></td>
-            </tr>
-            <tr>
-                <td class="holdCall" colspan="3"><label>
-                    Hold CALL
-                    <input type="checkbox" name="callButtonPress" value="CALL" class="numberButton"
-                           onChange="this.form.submit()"
-                           th:checked="${callButtonChecked}"/>
-                </label></td>
-            </tr>
-        </table>
-    </form>
-    <form action="AccessDevice" method="post">
-        <input type="hidden" name="command" value="accessCardRecipientCommand">
-        <label>
-            Access card id:<br>
-            <input type="text" name="accessCardId" required th:value="${insertedCardId}">
-        </label>
-        <br>
-        <br>
-        <input type="submit" class="defaultInput">
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 devicePanelDiv">
+            <section class="devicePanel">
+
+                <section>
+                    <form action="AccessDevice" method="post" class="accessDeviceForm">
+                        <input type="hidden" name="command" value="buttonsPanelCommand">
+                        <table cellspacing="0">
+                            <tr>
+                                <td colspan="3" class="imagesTd">
+                                    <div class="imageDiv">
+                                        <img src="../static/img/lock-solid.svg" th:src="@{/img/lock-solid.svg}"
+                                             alt="lockedDoor"
+                                             th:if="${isDoorLocked}">
+                                        <img src="../static/img/lock-open-solid.svg"
+                                             th:src="@{/img/lock-open-solid.svg}"
+                                             alt="unLockedDoor" th:unless="${isDoorLocked}">
+                                    </div>
+                                    <div class="imageDiv">
+                                        <img src="../static/img/volume-up-solid.svg"
+                                             th:src="@{/img/volume-up-solid.svg}"
+                                             alt="ringingBell" th:if="${isBellRinging}">
+                                        <img src="../static/img/volume-off-solid.svg"
+                                             th:src="@{/img/volume-off-solid.svg}" alt="bell"
+                                             th:unless="${isBellRinging}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="guiDisplay"><p th:text="${message}"></p></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="numberButton" value="1" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="2" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="3" class="numberButton"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="numberButton" value="4" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="5" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="6" class="numberButton"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="numberButton" value="7" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="8" class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="9" class="numberButton"></td>
+                            </tr>
+                            <tr>
+                                <td class="callTd"><input type="submit" name="callButton" value="CALL"
+                                                          class="numberButton"></td>
+                                <td><input type="submit" name="numberButton" value="0" class="numberButton"></td>
+                                <td><input type="submit" name="controlButton" value="CONTROL" class="numberButton"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <section class="holdCall">
+                                        <label>
+                                            Hold CALL
+                                            <input type="checkbox" name="callButtonPress" value="CALL"
+                                                   class="numberButton"
+                                                   onChange="this.form.submit()"
+                                                   th:checked="${callButtonChecked}"/>
+                                        </label>
+                                    </section>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </section>
+                <section>
+                    <form action="AccessDevice" method="post" class="accessDeviceCardRecipient">
+                        <input type="hidden" name="command" value="accessCardRecipientCommand">
+                        <label>
+                            Access card id:<br>
+                            <div th:switch="${insertedCardId} == ''">
+                                <input type="text" name="accessCardId" required th:value="${insertedCardId}" th:case="true">
+                                <input type="text" name="accessCardId" required th:value="${insertedCardId}" th:case="*" disabled>
+                            </div>
+                        </label>
+                        <br>
+                        <input type="submit" class="defaultInput" value="Submit">
+                    </form>
+                </section>
+            </section>
+        </div>
+        <div class="col-md-6 loginDiv">
+            <section class="loginPanel">
+
+                <form action="AccessDevice" method="post" class="loginForm">
+                    <h1>Login</h1>
+                    <p class="errorMessageP" th:text="${loginErrorMessage}" th:if="${loginErrorMessage}"></p>
+                    <input type="hidden" name="command" value="adminLoginCommand">
+                    <input type="text" name="adminLogin" placeholder="Login">
+                    <br>
+                    <input type="password" name="adminPassword" placeholder="Password">
+                    <br>
+                    <input type="submit" class="defaultInput" value="Submit">
+                </form>
+
+            </section>
+        </div>
+    </div>
 </div>
 
-<br>
-<form action="AccessDevice" method="post" class="loginForm" style="margin-top: 20px;">
-    <p class="errorMessageP" th:text="${loginErrorMessage}"></p>
-    <input type="hidden" name="command" value="adminLoginCommand">
-    <label>
-        Login <br>
-        <input type="text" name="adminLogin">
-    </label>
-    <br>
-    <br>
-    <label>
-        Password <br>
-        <input type="password" name="adminPassword">
-    </label>
-    <br>
-    <br>
-    <input type="submit" class="defaultInput">
-</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
