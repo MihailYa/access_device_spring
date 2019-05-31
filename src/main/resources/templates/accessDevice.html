@@ -16,6 +16,14 @@
         }
 
         /*]]>*/
+
+        (function(){
+            var path= document.location.pathname.replace(/^.*\/([^\/]+)$/, '$1');
+            window.onpopstate = function() {
+                history.pushState({}, "", path);
+            };
+            history.pushState({}, "", path);
+        })();
     </script>
 </head>
 <body>
