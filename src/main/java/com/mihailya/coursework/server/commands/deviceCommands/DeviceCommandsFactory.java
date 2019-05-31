@@ -1,7 +1,7 @@
 package com.mihailya.coursework.server.commands.deviceCommands;
 
 import com.mihailya.coursework.server.commands.AbstractCommandsFactory;
-import com.mihailya.coursework.server.commands.ICommand;
+import com.mihailya.coursework.server.commands.Command;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.AccessCardRecipientCommand;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.AdminLoginCommand;
 import com.mihailya.coursework.server.commands.deviceCommands.commands.ButtonsPanelCommand;
@@ -23,7 +23,7 @@ public class DeviceCommandsFactory extends AbstractCommandsFactory {
 	}
 
 	@Override
-	public ICommand getCommand(Map<String, String> requestParams) {
+	public Command getCommand(Map<String, String> requestParams) {
 		String requestCommand = requestParams.get(PARAM_COMMAND);
 
 		AbstractDeviceCommand command = commands.get(requestCommand);

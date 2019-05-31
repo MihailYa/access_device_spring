@@ -1,29 +1,19 @@
 package com.mihailya.coursework.server.controllers;
 
 import com.mihailya.coursework.accessDevice.AccessDevice;
-import com.mihailya.coursework.accessDevice.data.entities.AccessCard;
 import com.mihailya.coursework.accessDevice.data.entities.Admin;
-import com.mihailya.coursework.accessDevice.data.util.SqlStatementsManager;
 import com.mihailya.coursework.server.commands.AbstractCommandsFactory;
-import com.mihailya.coursework.server.commands.ICommand;
+import com.mihailya.coursework.server.commands.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.task.TaskExecutor;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.DefaultSessionAttributeStore;
-import org.springframework.web.bind.support.SessionAttributeStore;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.sql.DataSource;
-import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,7 +77,7 @@ public class MainController {
 	public String accessDeviceRequestsHandler(@RequestParam Map<String, String> allRequestParams,
 	                                          Model model) {
 
-		ICommand command = deviceCommandsFactory.getCommand(allRequestParams);
+		Command command = deviceCommandsFactory.getCommand(allRequestParams);
 
 		Map<String, String> sessionParams = new HashMap<>();
 		String page = command.execute(allRequestParams, model, accessDevice, sessionParams);
@@ -109,7 +99,7 @@ public class MainController {
 	                                        WebRequest request,
 	                                        DefaultSessionAttributeStore store,
 	                                        SessionStatus status) {
-		ICommand command = adminCommandsFactory.getCommand(allRequestParams);
+		Command command = adminCommandsFactory.getCommand(allRequestParams);
 
 		Map<String, String> sessionParams = new HashMap<>();
 		sessionParams.put(MainController.SESSION_ADMIN_ID, Integer.toString(admin.getId()));

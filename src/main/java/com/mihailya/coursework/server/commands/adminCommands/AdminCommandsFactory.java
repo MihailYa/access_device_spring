@@ -1,7 +1,7 @@
 package com.mihailya.coursework.server.commands.adminCommands;
 
 import com.mihailya.coursework.server.commands.AbstractCommandsFactory;
-import com.mihailya.coursework.server.commands.ICommand;
+import com.mihailya.coursework.server.commands.Command;
 import com.mihailya.coursework.server.commands.adminCommands.commands.*;
 
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class AdminCommandsFactory extends AbstractCommandsFactory {
 	}
 
 	@Override
-	public ICommand getCommand(Map<String, String> requestParams) {
+	public Command getCommand(Map<String, String> requestParams) {
 		String requestCommand = requestParams.get(PARAM_COMMAND);
 
 		AbstractAdminCommand command = commands.get(requestCommand);

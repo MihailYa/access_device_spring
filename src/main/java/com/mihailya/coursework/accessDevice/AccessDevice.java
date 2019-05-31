@@ -3,9 +3,9 @@ package com.mihailya.coursework.accessDevice;
 import com.mihailya.coursework.accessDevice.data.entities.AccessCard;
 import com.mihailya.coursework.accessDevice.deviceComponents.Memory;
 import com.mihailya.coursework.accessDevice.deviceComponents.accessCardRecipient.AccessCardRecipient;
-import com.mihailya.coursework.accessDevice.deviceComponents.accessCardRecipient.ICardDataReceiver;
+import com.mihailya.coursework.accessDevice.deviceComponents.accessCardRecipient.CardDataReceiver;
 import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.ButtonsPanel;
-import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.IButtonsPanelEventsReceiver;
+import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.ButtonsPanelEventsReceiver;
 import com.mihailya.coursework.accessDevice.deviceComponents.buttonsPanel.buttons.Button;
 import com.mihailya.coursework.accessDevice.deviceStates.AccessDeviceState;
 import com.mihailya.coursework.accessDevice.deviceStates.InitState;
@@ -17,7 +17,7 @@ import org.springframework.core.task.TaskExecutor;
 import javax.sql.DataSource;
 
 
-public class AccessDevice implements IButtonsPanelEventsReceiver, ICardDataReceiver {
+public class AccessDevice implements ButtonsPanelEventsReceiver, CardDataReceiver {
 
 	private Logger log = LoggerFactory.getLogger(AccessDevice.class.getName());
 

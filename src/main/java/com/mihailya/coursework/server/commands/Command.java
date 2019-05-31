@@ -5,6 +5,6 @@ import org.springframework.ui.Model;
 
 import java.util.Map;
 
-public interface ICommand {
+public interface Command {
 	String execute(Map<String, String> requestParams, Model model, AccessDevice accessDevice, Map<String, String> sessionParams);
 }

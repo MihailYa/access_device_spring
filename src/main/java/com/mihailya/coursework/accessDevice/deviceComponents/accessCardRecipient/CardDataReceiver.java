@@ -2,6 +2,6 @@ package com.mihailya.coursework.accessDevice.deviceComponents.accessCardRecipien
 
 import com.mihailya.coursework.accessDevice.data.entities.AccessCard;
 
-public interface ICardDataReceiver {
+public interface CardDataReceiver {
 	void onCardInserted(AccessCard accessCard);
 }
