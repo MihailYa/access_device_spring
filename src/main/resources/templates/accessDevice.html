@@ -119,9 +119,9 @@
                     <h1>Login</h1>
                     <p class="errorMessageP" th:text="${loginErrorMessage}" th:if="${loginErrorMessage}"></p>
                     <input type="hidden" name="command" value="adminLoginCommand">
-                    <input type="text" name="adminLogin" placeholder="Login">
+                    <input type="text" name="adminLogin" placeholder="Login" required>
                     <br>
-                    <input type="password" name="adminPassword" placeholder="Password">
+                    <input type="password" name="adminPassword" placeholder="Password" required>
                     <br>
                     <input type="submit" class="defaultInput" value="Submit">
                 </form>
